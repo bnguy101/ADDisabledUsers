@@ -1,0 +1,4 @@
+# Creates an Excel file of AD users based on their name, e-mail, account creation date, and last logon date
+
+$data = Get-ADUser -Filter * -SearchBase "OU=AddInfoHere,DC=AddInfoHere,DC=com" -Properties LastLogonDate, WhenCreated | Select-Object Name, UserPrincipalName, WhenCreated, LastLogonDate
+$data | Export-Csv -Path 'C:\Users\AddInfoHere.csv' -NoTypeInformation
