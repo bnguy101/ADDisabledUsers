@@ -1,0 +1,18 @@
+# Gathers a user's information from AD and returns the request. Also added the loop
+
+do {
+
+
+$username = "Please enter the username (ex:jdoe)"
+$a = read-host -Prompt "$username (enter name here)"
+if (!$a) {a = $username}
+write-host "Pulling information for $a"
+get-aduser -identity $a -properties passwordlastset, lockedout, passwordexpired, lastlogondate
+
+    Write-Host " Would you like to get AD info for another user? (yes/no)"
+    $response = Read-Host
+
+ 
+
+} while ($response -eq 'yes')
+
