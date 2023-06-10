@@ -1,0 +1,3 @@
+# Pulls the disabled accounts on Active Directory using PowerShell
+
+Get-ADUser -Filter 'Enabled -eq $false' -Properties Name, UserPrincipalName, Enabled | Select-Object Name, UserPrincipalName, Enabled | Export-Csv -Path 'C:\Users\bnguyen\Desktop\DisabledUserAccounts.csv' -NoTypeInformation
